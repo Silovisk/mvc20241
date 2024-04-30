@@ -12,6 +12,15 @@ class ProfessorDAO extends MysqlFactory implements IProfessorDAO{
        $retorno= $this->banco->executar($sql);
        return $retorno;
     }
+
+    public function inserir($nome){
+        $sql="insert into professores (nome) values (:nome)";
+        $retorno= $this->banco->executar($sql,["nome"=>$nome]);
+        return $retorno;
+    }
+
+    
+
 }
 
 ?>

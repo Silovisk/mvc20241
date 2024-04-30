@@ -9,12 +9,15 @@ class Chamadas
     {
         $this->arrChamadas = [
             "professores/lista" => new Acao("service\ProfessorService", "listar"),
-            "professores/soma" => new Acao("service\ProfessorService", "professor"),
+            "professores/soma" => new Acao("service\ProfessorService", "professor",[Acao::GET,Acao::POST]),
+            "professores/inserir" => new Acao("service\ProfessorService", "inserir",[Acao::POST]),
+           
         ];
     }
 
     public function buscarRotas($endpoint)
     {
+       
         if (isset($this->arrChamadas[$endpoint])) {
 
             return   $this->arrChamadas[$endpoint];
