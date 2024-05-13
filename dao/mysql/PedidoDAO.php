@@ -10,7 +10,7 @@ class PedidoDAO extends MysqlFactory implements IPedidoDAO
 {
     public function index()
     {
-        $sql = "SELECT nome, descricao, preco, restaurante_id FROM Pratos";
+        $sql = "SELECT * FROM Pedidos";
         $retorno = $this->banco->executar($sql);
         return $retorno;
     }
@@ -18,4 +18,5 @@ class PedidoDAO extends MysqlFactory implements IPedidoDAO
     public function store($usuario_id, $restaurante_id, $data_hora)
     {
     }
+
 }
