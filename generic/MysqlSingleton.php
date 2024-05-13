@@ -9,7 +9,7 @@ class MysqlSingleton
     private static $instance = null;
 
     private $conexaoPDO = null;
-    private $dsn = "mysql:host=localhost;dbname=escola";
+    private $dsn = "mysql:host=localhost;dbname=ifood";
     private $username = "root";
     private $password = "";
 
@@ -42,7 +42,13 @@ class MysqlSingleton
                 $sth->bindParam($key, $value, PDO::PARAM_STR);
             }
             $sth->execute();
-            return $sth->fetchAll(PDO::FETCH_ASSOC);
+            if (strpos($sql, 'INSERT') === 0) {
+                return $this->conexaoPDO->lastInsertId();
+            } elseif (strpos($sql, 'UPDATE') === 0 || strpos($sql, 'DELETE') === 0) {
+                return $sth->rowCount();
+            } else {
+                return $sth->fetchAll(PDO::FETCH_ASSOC);
+            }
         }
     }
 }
