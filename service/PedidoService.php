@@ -1,35 +1,33 @@
-<?php 
+<?php
 
 namespace service;
 
 use dao\mysql\PedidoDAO;
 
-class PedidoService extends PedidoDAO{
-    public function listar(){
-       return parent::listar();
+class PedidoService extends PedidoDAO
+{
+    public function index()
+    {
+        return parent::index();
     }
 
-    public function inserir($usuario_id, $restaurante_id, $data_hora){
-        if($usuario_id == '' || $restaurante_id == '' || $data_hora == ''){
-            return false;
-        }
-        parent::inserir($usuario_id, $restaurante_id, $data_hora);
-        return true;
+    public function store($usuario_id, $restaurante_id, $data_hora)
+    {
+        return parent::store($usuario_id, $restaurante_id, $data_hora);
     }
 
-    public function atualizar($id, $usuario_id, $restaurante_id, $data_hora){
-        if($id == '' || $usuario_id == '' || $restaurante_id == '' || $data_hora == ''){
-            return false;
-        }
-        parent::atualizar($id, $usuario_id, $restaurante_id, $data_hora);
-        return true;
+    public function show($id)
+    {
+        return parent::show($id);
     }
 
-    public function deletar($id){
-        if($id == ''){
-            return false;
-        }
-        parent::deletar($id);
-        return true;
+    public function update($id, $usuario_id, $restaurante_id, $data_hora)
+    {
+        return parent::update($id, $usuario_id, $restaurante_id, $data_hora);
+    }
+
+    public function destroy($id)
+    {
+        return parent::destroy($id);
     }
 }
