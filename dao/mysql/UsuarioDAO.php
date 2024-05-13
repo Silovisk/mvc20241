@@ -20,7 +20,7 @@ class UsuarioDAO extends MysqlFactory implements IUsuarioDAO{
     }
 
     public function show($id){
-        $usuarioExiste = $this->find($id);
+        $usuarioExiste = $this->findUsuario($id);
         if (empty($usuarioExiste)) {
             return "Usuário não encontrado";
         }
@@ -31,7 +31,7 @@ class UsuarioDAO extends MysqlFactory implements IUsuarioDAO{
 
     public function update($id, $nome, $email)
     {
-        $usuarioExiste = $this->find($id);
+        $usuarioExiste = $this->findUsuario($id);
         if (empty($usuarioExiste)) {
             return "Usuário não encontrado";
         }
@@ -43,7 +43,7 @@ class UsuarioDAO extends MysqlFactory implements IUsuarioDAO{
     public function destroy($id)
     {
         try {
-            $usuarioExiste = $this->find($id);
+            $usuarioExiste = $this->findUsuario($id);
             if (empty($usuarioExiste)) {
                 return "Usuário não encontrado";
             }
@@ -55,7 +55,7 @@ class UsuarioDAO extends MysqlFactory implements IUsuarioDAO{
         }
     }
 
-    public function find($id)
+    public function findUsuario($id)
     {
         $sql = "SELECT id FROM Usuarios WHERE id = :id";
         $retorno = $this->banco->executar($sql, ["id" => $id]);
