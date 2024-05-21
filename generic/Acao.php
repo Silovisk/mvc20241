@@ -17,22 +17,35 @@ class Acao
     private $metodo;
     //post, get, delete, patch, put
     private $action;
+    private $autenticar;
 
-    public function __construct($classe, $metodo, $action = [Acao::GET])
+    public function __construct($classe, $metodo, $action = [Acao::GET],$autenticar = true)
     {
         $this->classe = $classe;
         $this->metodo = $metodo;
         $this->action = $action;
+        $this->autenticar = $autenticar;
     }
 
     public function executar()
     {
         try {
-
+            $decode=null;
+            
             if (!$this->verificarMetodo()) {
                 http_response_code(405);
                 return;
             }
+
+            if($this->autenticar){
+                $jwt= new JWTAuth();
+                $decode=$jwt->verificar();
+                if(!$decode){
+                    http_response_code(401);
+                    return;
+                }
+            }
+
             $return = null;
             $obj = new $this->classe();
 
