@@ -1,6 +1,13 @@
 <?php
+
 namespace dao\interface;
-interface IPedidoDAO{
+
+interface IPedidoDAO
+{
     public function index();
-    public function store($usuario_id, $restaurante_id, $data_hora);
+    public function store(
+        $pedido_id,
+        $prato_id,
+        $quantidade
+    );
 }
