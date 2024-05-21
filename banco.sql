@@ -81,6 +81,7 @@ INSERT INTO PedidosPratos (pedido_id, prato_id, quantidade) VALUES
 (2, 4, 2);
 
 INSERT INTO Usuarios (nome, email) VALUES
+('admin', 'admin@admin'),
 ('Carlos Santos', 'carlos.santos@example.com'),
 ('Ana Oliveira', 'ana.oliveira@example.com');
 

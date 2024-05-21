@@ -8,7 +8,7 @@ use Firebase\JWT\Key;
 
 class JWTAuth
 {
-    private string $key = "adlsfh ljslkdfjalskdfaljdhfj23480rfjehjH#&*#####jnaskfj3947*($$&&@_)jhdfbajhfawekjh@#$*$(#@jsfglkçsfjgçoisfgghjki4";
+    private string $key = "CHAMITIN_BALAHALLSSS_DE_HAHA_DE_RAIO_LAIZER_ULALAU";
 
     public function criarChave($dados)
     {

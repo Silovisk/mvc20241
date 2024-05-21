@@ -7,6 +7,15 @@ use Exception;
 
 class UsuarioDAO extends MysqlFactory implements IUsuarioDAO{
 
+
+    public function autenticar($nome, $email)
+    {
+        $sql = "SELECT nome, email FROM Usuarios where nome=:nome and email=:email";
+        $retorno = $this->banco->executar($sql, ["nome" => $nome, "email" => $email]);
+        
+        return $retorno;
+    }
+
     public function index(){
         $sql="SELECT id, nome, email FROM Usuarios";
         $retorno= $this->banco->executar($sql);

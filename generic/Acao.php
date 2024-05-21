@@ -4,6 +4,7 @@ namespace generic;
 
 use Exception;
 use ReflectionMethod;
+use generic\JWTAuth;
 
 class Acao
 {
