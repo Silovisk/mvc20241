@@ -61,4 +61,11 @@ class RestauranteDAO extends MysqlFactory implements IRestauranteDAO{
         $retorno = $this->banco->executar($sql, ["id" => $id]);
         return $retorno;
     }
+
+    public function findAllRestaurante($id)
+    {
+        $sql = "SELECT * FROM Restaurantes WHERE id = :id";
+        $retorno = $this->banco->executar($sql, ["id" => $id]);
+        return $retorno;
+    }
 }
