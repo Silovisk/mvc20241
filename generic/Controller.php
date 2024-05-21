@@ -23,17 +23,6 @@ class Controller{
             http_response_code(404);
             return;
         }
-       
         $rota->executar();
-
-        
-
-         
-
-        
     }
-
-
-
-
 }

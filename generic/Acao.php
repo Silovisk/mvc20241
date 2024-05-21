@@ -55,9 +55,9 @@ class Acao
             if ($param) {
                 $return = $this->invocarMetodos($reflectM, $obj, $param);
                 header("Content-Type: application/json");
-                $r = new Retorno();
-                $r->retorno = $return;
-                echo json_encode($r);
+                $return = $this->processarRequisicao($return);
+
+                echo json_encode($return);
             }
         } catch (Exception $e) {
             http_response_code(500);
@@ -90,13 +90,15 @@ class Acao
     }
     private function verificaParametros(ReflectionMethod $reflectM, $parametros)
     {
-
+        
         $param = [];
         $reflecP = $reflectM->getParameters();
         if (sizeof($reflecP)) {
             foreach ($reflecP as $v) {
                 $name = $v->getName();
 
+                // echo json_encode($parametros);
+                // echo json_encode($name);
                 if (!isset($parametros[$name])) {
                     http_response_code(406);
                     return false;
@@ -109,5 +111,40 @@ class Acao
         }
 
         return true;
+    }
+
+    public function processarRequisicao($return)
+    {
+        $r = new Retorno();
+
+        $r->retorno = $return;
+
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'POST':
+                if ($return) {
+                    $r->mensagem = "Dados salvos com sucesso!";
+                }
+                break;
+            case 'GET':
+                $r->mensagem = "Dados recuperados com sucesso!";
+                break;
+            case 'PUT':
+            case 'PATCH':
+                if ($return) {
+                    $r->mensagem = "Dados atualizados com sucesso!";
+                }
+                break;
+            case 'DELETE':
+                if ($return) {
+                    $r->mensagem = "Dados deletados com sucesso!";
+                }
+                break;
+            default:
+                http_response_code(405);
+                $r->mensagem = "Método não suportado!";
+                break;
+        }
+
+        echo json_encode($r);
     }
 }
