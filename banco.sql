@@ -45,12 +45,13 @@ CREATE TABLE Pedidos (
 );
 
 CREATE TABLE PedidosPratos (
+    id INT AUTO_INCREMENT,
     pedido_id INT,
     prato_id INT,
     quantidade INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY(pedido_id, prato_id),
+    PRIMARY KEY(id),
     FOREIGN KEY (pedido_id) REFERENCES Pedidos(id) ON DELETE CASCADE,
     FOREIGN KEY (prato_id) REFERENCES Pratos(id) ON DELETE CASCADE
 );
