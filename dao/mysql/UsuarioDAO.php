@@ -61,4 +61,11 @@ class UsuarioDAO extends MysqlFactory implements IUsuarioDAO{
         $retorno = $this->banco->executar($sql, ["id" => $id]);
         return $retorno;
     }
+
+    public function findAllUsuario($id)
+    {
+        $sql = "SELECT * FROM Usuarios WHERE id = :id";
+        $retorno = $this->banco->executar($sql, ["id" => $id]);
+        return $retorno;
+    }
 }
