@@ -12,6 +12,8 @@ class Chamadas
     {
         $this->arrChamadas = [
             "usuario/autenticar" => new Acao("service\UsuarioService", "autenticar", [Acao::POST]),
+            "pedido/retornaRestauranteEUsuario" => new Acao("service\PedidoService", "retornaRestauranteEUsuario", [Acao::GET]),
+            "pedidosPratos/retornaPedidosPratos" => new Acao("service\PedidosPratosService", "retornaPedidosPratos", [Acao::GET]),
         ];
 
         $commom = new Commom();
@@ -20,6 +22,7 @@ class Chamadas
         $this->arrChamadas = array_merge($this->arrChamadas, $commom->apiResource("restaurante"));
         $this->arrChamadas = array_merge($this->arrChamadas, $commom->apiResource("prato"));
         $this->arrChamadas = array_merge($this->arrChamadas, $commom->apiResource("pedido"));
+        $this->arrChamadas = array_merge($this->arrChamadas, $commom->apiResource("pedidosPratos"));
 
     }
 
