@@ -129,4 +129,12 @@ class PratoDAO extends MysqlFactory implements IPratoDAO
         $retorno = $this->banco->executar($sql, ["id" => $id]);
         return $retorno;
     }
+
+    public function findAllPrato($id)
+    {
+        $sql = "SELECT * FROM Pratos WHERE id = :id";
+        $retorno = $this->banco->executar($sql, ["id" => $id]);
+        
+        return $retorno;
+    }
 }
