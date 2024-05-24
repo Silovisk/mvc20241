@@ -8,12 +8,6 @@ use Exception;
 use stdClass;
 
 class UsuarioService extends UsuarioDAO{
-
-    // public function autenticar(){
-    //     $jwt = new JWTAuth();
-    //     return $jwt->criarChave("CHAMITIN_BALAHALLSSS_DE_HAHA_DE_RAIO_LAIZER_ULALAU");
-    // }
-
     public function autenticar($nome, $email)
     {
         $rows = parent::autenticar($nome, $email);
