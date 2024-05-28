@@ -56,6 +56,18 @@ CREATE TABLE PedidosPratos (
     FOREIGN KEY (prato_id) REFERENCES Pratos(id) ON DELETE CASCADE
 );
 
+CREATE TABLE Bebidas (
+    id INT AUTO_INCREMENT,
+    nome VARCHAR(255),
+    descricao TEXT,
+    preco DECIMAL(5,2),
+    restaurante_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY(id),
+    FOREIGN KEY (restaurante_id) REFERENCES Restaurantes(id) ON DELETE CASCADE
+);
+
 INSERT INTO Usuarios (nome, email) VALUES
 ('João Silva', 'joao.silva@example.com'),
 ('Maria Pereira', 'maria.pereira@example.com');
